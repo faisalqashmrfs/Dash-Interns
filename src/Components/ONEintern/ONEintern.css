@@ -1,0 +1,55 @@
+.DataIntern
+{
+    width: 100%;
+    transition: .2s;
+}
+.DataIntern-off
+{
+    width: 100%;
+    padding-left: 250px;
+    transition: .2s;
+}
+.Body-info
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 10px;
+}
+.Body-info .one-info
+{
+    width: 47%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    background-color: antiquewhite;
+    font-size: 22px;
+    height: 50px;
+}
+.Body-info .one-info h3
+{
+    margin-right: 20px;
+}
+.Controle-Certificate
+{
+    text-align: center;
+}
+.Controle-Certificate button
+{
+    width: 150px;
+    height: 40px;
+    background-color: transparent;
+    font-size: 24px;
+    color: #FF8500;
+    border: 1px solid #FF8500;
+    border-radius: 3px;
+    margin-right: 20px;
+    cursor: pointer;
+    transition: .2s;
+}
+.Controle-Certificate button:hover
+{
+    background-color: #FF8500;
+    color: #fff;
+}

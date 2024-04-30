@@ -1,0 +1,15 @@
+.AddUser
+{
+    width: 100%;
+    transition: .2s;
+}
+.AddUser-off
+{
+    width: 100%;
+    padding-left: 250px;
+    transition: .2s;
+}
+.Form-AddUser
+{
+    padding: 10px;
+}

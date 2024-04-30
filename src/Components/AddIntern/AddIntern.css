@@ -1,0 +1,100 @@
+.AddInternForm
+{
+    width: 100%;
+    transition: .2s;
+}
+.AddInternForm-off
+{
+    width: 100%;
+    padding-left: 250px;
+    transition: .2s;
+}
+.FormIntern
+{
+    padding: 10px;
+    width: 100%;
+}
+.FormIntern form 
+{
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+.FormIntern form div
+{
+    width: 48%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.FormIntern form input , .FormIntern form select
+{
+    width: 100%;
+    height: 40px;
+    margin-top: 5px;
+    font-size: 16px;
+    border: 1px solid #FF8500;
+    background-color: rgb(255, 245, 232);
+}
+.FormIntern form input:focus , .FormIntern form select:focus
+{
+    outline: 1px solid #FF8500;
+    border: none;
+    box-shadow: 0 0 5px 1px #FF8500;
+}
+.FormIntern form .Select 
+{
+    width: 100%;
+}
+.FormIntern form label 
+{
+    font-weight: 700;
+    padding-bottom: 10px;
+}
+.FormIntern .Submite
+{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 3px 28px;
+    background-color: #FF8500;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    font-size: 18px;
+    cursor: pointer;
+}
+.Back-form
+{
+    font-size: 22px;
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+    transition: .2s;
+    border: 1px solid #FF8500;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 5px;
+    left: 320px;
+}
+.Back-form-off
+{
+    font-size: 22px;
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+    transition: .2s;
+    border: 1px solid #FF8500;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 5px;
+    left: 60px;
+}
