@@ -196,3 +196,134 @@
 {
     padding-top: 85px !important;
 }
+.PDF-containarA4
+{
+    width: 595px;
+    margin: 0 auto;
+    height: 842px;
+}
+.box-certificate.x
+{
+    width: 595px;
+    margin: 20px auto;
+}
+.PDF-containarA4
+{
+    padding: 30px;
+}
+
+.PDF-containarA4 .theTop
+{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+.PDF-containarA4 .theTop::before
+{
+    content: "";
+    position: absolute;
+    width: 7px;
+    height: 25px;
+    background: #FF8500;
+    left: -30px;
+}
+.PDF-containarA4  h3
+{
+    width: max-content;
+    margin: 30px auto;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24.38px;
+    text-align: left;
+}
+.PDF-containarA4  h5
+{
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;    
+}
+.PDF-containarA4  .h1
+{
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    text-align: left;   
+    display: inline;
+}
+.PDF-containarA4 .dESCRIP
+{
+    width: 535px;
+    height: 332px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.PDF-containarA4 .dESCRIP p
+{
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;
+}
+.PDF-containarA4 h6
+{
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;
+}
+.PDF-containarA4 .Thank-Name
+{
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0;
+}
+.PDF-containarA4 .Thank-Name p
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17.07px;
+    text-align: left;
+}
+.PDF-containarA4 .Thank-Name p span
+{
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;    
+}
+.PDF-containarA4 .end-certificate 
+{
+    width: 100%;
+    height: 87px;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 90px;
+}
+.PDF-containarA4 .end-certificate .one
+{
+    width: 233px;
+    height: 87px;
+    background-image: url(./../../assets/EndLeft.png);
+}
+.PDF-containarA4 .end-certificate .tow
+{
+    width: 258px;
+    height: 87px;
+    background-image: url(./../../assets/EndRight.png);
+}
