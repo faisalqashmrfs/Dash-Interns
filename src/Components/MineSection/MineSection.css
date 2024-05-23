@@ -196,3 +196,63 @@
     color: #fff;
     border: none;
 }
+.ResateData
+{
+    font-size: 18px;
+    width: 100px;
+    height: 35px;
+    color: #fff;
+    border: 1px solid #fff;
+    background-color: transparent;
+    position: absolute;
+    top: 7px;
+    right: -200px;
+    cursor: pointer;
+
+}
+.VirgenWorkspacs2
+{
+    font-size: 18px;
+    width: 300px;
+    height: 35px;
+    color: #fff;
+    border: 1px solid #fff;
+    background-color: transparent;
+    position: absolute;
+    top: 12px;
+    right: 50%;
+    transform: translateX(50%);
+    transition: .2s;
+}
+.VirgenWorkspacs
+{
+    font-size: 18px;
+    width: 300px;
+    height: 35px;
+    color: #fff;
+    border: 1px solid #fff;
+    background-color: transparent;
+    position: absolute;
+    top: 12px;
+    right: 50%;
+    transform: translateX(calc(50% + 250px));
+    transition: .2s;
+}
+
+.SelectedV
+{
+    width: 100px;
+    height: 35px;
+    font-size: 18px;
+    color: #fff;
+    border: 1px solid #fff;
+    background-color: #FF8500;
+    position: absolute;
+    top: 7px;
+    right: -70px;
+    cursor: pointer;
+}
+.SelectedV:focus
+{
+    outline: none;
+}

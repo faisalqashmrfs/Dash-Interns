@@ -1,19 +1,45 @@
 import { IoMdArrowRoundBack } from 'react-icons/io'
 import NavSidBar from '../NavSidBar/NavSidBar'
 import './ONEintern.css'
-import { Link } from 'react-router-dom'
-import React, { useState } from 'react';
+import { Link, useParams } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import QRCode from 'qrcode.react';
 import focal from './../../assets/focal X 1 (1).png';
 import focalx from './../../assets/Group 7.png';
+import axios from 'axios';
 
 
 export default function ONEintern({ nAVbAR, setnAVbAR }) {
 
+  const { id } = useParams();
+  const token = localStorage.getItem('token');
+  const [Data, setData] = useState();
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get(`https://test.black-analysis-solutions.com/api/intern/${id}` ,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+          }
+        }
+        );
+        setData(response.data);
+        console.log(Data);
+      } catch (error) {
+        console.error('Error fetching users:', error);
+      }
+    };
+    fetchUsers();
+  }, []);
+
   return (
-    <section>
+      <>
+      {Data ? <section>
       <NavSidBar nAVbAR={nAVbAR} setnAVbAR={setnAVbAR} />
       <section className={nAVbAR ? 'DataIntern-off' : 'DataIntern'}>
         <Link
@@ -26,43 +52,43 @@ export default function ONEintern({ nAVbAR, setnAVbAR }) {
         <div className='Body-info'>
           <div className='one-info'>
             <h3>Name :</h3>
-            <p>test@test.com</p>
+            <p>{Data.name}</p>
           </div>
           <div className='one-info'>
             <h3>ID-Certificate :</h3>
-            <p>test@test.com</p>
+            <p>{Data.id_certificate}</p>
           </div>
           <div className='one-info'>
             <h3>KPI :</h3>
-            <p>test@test.com</p>
+            <p>{Data.kpi}</p>
           </div>
           <div className='one-info'>
             <h3>E-mail : </h3>
-            <p> test@test.com</p>
+            <p> {Data.email}</p>
           </div>
           <div className='one-info'>
             <h3>Specilization :</h3>
-            <p>test@test.com</p>
+            <p>{Data.specialization}</p>
           </div>
           <div className='one-info'>
             <h3>Address :</h3>
-            <p>test@test.com</p>
+            <p>{Data.address}</p>
           </div>
           <div className='one-info'>
             <h3>Supervisor :</h3>
-            <p>test@test.com</p>
+            <p>{Data.supervisor}</p>
           </div>
           <div className='one-info'>
             <h3>Certificate Type :</h3>
-            <p>test@test.com</p>
+            <p>{Data.certificate_type}</p>
           </div>
           <div className='one-info'>
             <h3>Start Data :</h3>
-            <p>test@test.com</p>
+            <p>{Data.startDate}</p>
           </div>
           <div className='one-info'>
             <h3>End Data :</h3>
-            <p>test@test.com</p>
+            <p>{Data.endDate}</p>
           </div>
         </div>
         <div className='Controle-Certificate'>
@@ -82,9 +108,9 @@ export default function ONEintern({ nAVbAR, setnAVbAR }) {
               </div>
               <div className='Mid'>
                 <span>This is to certify that</span>
-                <p>Rama Mohammed Shaher Alabsah</p>
+                <p>{Data.name}</p>
                 <span>attend 4 months internship program in</span>
-                <p>Web Development Front-end lvl.2</p>
+                <p>{Data.specialization}</p>
                 <span>a program offered by focal X (L.L.C)</span>
               </div>
               <div className='End'>
@@ -124,9 +150,9 @@ export default function ONEintern({ nAVbAR, setnAVbAR }) {
               </div>
               <div className='Mid mid2'>
                 <span>This is to certify that</span>
-                <p>Rama Mohammed Shaher Alabsah2</p>
+                <p>{Data.name}</p>
                 <span className='midmid'>successfully completed four months internship program<br /> and received passing grades for certificate in</span>
-                <p>Web Development Front-end lvl.2</p>
+                <p>{Data.specialization}</p>
                 <span>a program offered by focal X (L.L.C)</span>
               </div>
               <div className='End'>
@@ -164,31 +190,31 @@ export default function ONEintern({ nAVbAR, setnAVbAR }) {
               <span>simple & clean</span>
             </div>
             <h3>Recommendation Letter</h3>
-            <div className='dESCRIP'>  
+            <div className='dESCRIP'>
               <h5>To whom it may concern,</h5>
-              <p>I am writing to recommend <span className='h1'>Ahmad Mahmud Kerbuje</span><br />
+              <p>I am writing to recommend <span className='h1'>{Data.name}</span><br />
                 He successfully completed a four-month training program<br />
-                in Digital Marketing front-end levl - 2   from July 2023 to November 2023.
+                in {Data.specialization} from {Data.startDate} to {Data.endDate} .
               </p>
-              <p>Ahmad Mohammed is a motivated individual with a passion for front-end development. He demonstrated exceptional creativity, attention to detail, technical expertise, teamwork, and adaptability during the program.
+              <p>{Data.name} is a motivated individual with a passion for {Data.specialization}. He demonstrated exceptional creativity, attention to detail, technical expertise, teamwork, and adaptability during the program.
               </p>
               <p>
-                Ahmad Mohammed  would be a valuable asset to your company.<br />
-                He has the skills and work ethic to thrive in digital marketing front-end.<br />
+               {Data.name}  would be a valuable asset to your company.<br />
+                He has the skills and work ethic to thrive in {Data.specialization}.<br />
                 I highly recommend him for employment and encourage you to consider his application.
               </p>
               <p>
-                Please feel free to contact me if you require further information about Ahmad's qualifications and performance.
+                Please feel free to contact me if you require further information about  {Data.name.split(' ')[0]}'s qualifications and performance.
               </p>
             </div>
-              <h6>Thank You,</h6>
+            <h6>Thank You,</h6>
             <div className='Thank-Name'>
               <p>
                 <span>Alaa Darwish</span>
                 <span>Founder & CEO</span>
               </p>
               <p>
-                Date: 01\06\2024
+                Date: {Data.endDate}
               </p>
             </div>
             <div className='end-certificate'>
@@ -198,8 +224,8 @@ export default function ONEintern({ nAVbAR, setnAVbAR }) {
           </div>
         </div>
       </div>
-    </section>
-
+    </section> : <></>}
+      </>
   )
 }
 
