@@ -234,7 +234,7 @@ export default function ONEintern({ nAVbAR, setnAVbAR }) {
 const createPDF = () => {
   const input = document.getElementById('pdf-content');
 
-  html2canvas(input, { scale: 2 }).then((canvas) => { // استخدم scale لتحسين الدقة
+  html2canvas(input, { scale: 2 }).then((canvas) => { 
     const imgData = canvas.toDataURL('image/png');
     const pdf = new jsPDF({
       orientation: 'landscape',
@@ -249,14 +249,14 @@ const createPDF = () => {
 const createPDF2 = () => {
   const input = document.getElementById('pdf-content2');
 
-  html2canvas(input, { scale: 2 }).then((canvas) => { // استخدم scale لتحسين الدقة
+  html2canvas(input, { scale: 2 }).then((canvas) => { 
     const imgData = canvas.toDataURL('image/png');
     const pdf = new jsPDF({
       orientation: 'landscape',
       unit: 'mm',
       format: [223, 157.6]
     });
-    pdf.addImage(imgData, 'PNG', 0, 0, 223, 157.6); // ضبط الأبعاد هنا
+    pdf.addImage(imgData, 'PNG', 0, 0, 223, 157.6); 
     pdf.save('شهادة تخرج');
   });
 };
@@ -264,14 +264,14 @@ const createPDF2 = () => {
 const createPDF3 = () => {
   const input = document.getElementById('pdf-content3');
 
-  html2canvas(input, { scale: 2 }).then((canvas) => { // استخدم scale لتحسين الدقة
+  html2canvas(input, { scale: 2 }).then((canvas) => { 
     const imgData = canvas.toDataURL('image/png');
     const pdf = new jsPDF({
       orientation: 'portrait',
       unit: 'mm',
       format: 'a4'
     });
-    pdf.addImage(imgData, 'PNG', 0, 0, 210, 297); // ضبط الأبعاد هنا (A4)
+    pdf.addImage(imgData, 'PNG', 0, 0, 210, 297);
     pdf.save('توصية');
   });
 };
