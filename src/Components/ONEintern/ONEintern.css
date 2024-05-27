@@ -316,18 +316,42 @@
     width: 100%;
     height: 87px;
     display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-top: 100px;
+}
+.PDF-containarA4 .end-certificate div
+{
+    width: 100%;
+    display: flex;
     justify-content: space-between;
-    padding-top: 90px;
 }
-.PDF-containarA4 .end-certificate .one
+.PDF-containarA4 .end-certificate p
 {
-    width: 233px;
-    height: 87px;
-    background-image: url(./../../assets/EndLeft.png);
+    font-family: Montserrat;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 12.19px;
+    text-align: left;
+    margin: 1.5px 0;
+    
 }
-.PDF-containarA4 .end-certificate .tow
+.PDF-containarA4 .end-certificate .or-fq-fq
 {
-    width: 258px;
-    height: 87px;
-    background-image: url(./../../assets/EndRight.png);
+    font-family: Montserrat;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 12.19px;
+    text-align: left;
+    color: #FF8500;
+;
+}
+.PDF-containarA4 .end-certificate span
+{
+    font-family: Montserrat;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 12.19px;
+    text-align: left;
+    
 }
