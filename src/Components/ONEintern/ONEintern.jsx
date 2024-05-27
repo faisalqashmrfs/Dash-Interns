@@ -38,7 +38,7 @@ export default function ONEintern({ nAVbAR, setnAVbAR }) {
   }, []);
 
   return (
-      <>
+      <section className='OneIntern-certificate'>
       {Data ? <section>
       <NavSidBar nAVbAR={nAVbAR} setnAVbAR={setnAVbAR} />
       <section className={nAVbAR ? 'DataIntern-off' : 'DataIntern'}>
@@ -225,7 +225,7 @@ export default function ONEintern({ nAVbAR, setnAVbAR }) {
         </div>
       </div>
     </section> : <></>}
-      </>
+      </section>
   )
 }
 
@@ -234,14 +234,14 @@ export default function ONEintern({ nAVbAR, setnAVbAR }) {
 const createPDF = () => {
   const input = document.getElementById('pdf-content');
 
-  html2canvas(input).then((canvas) => {
+  html2canvas(input, { scale: 2 }).then((canvas) => { // استخدم scale لتحسين الدقة
     const imgData = canvas.toDataURL('image/png');
     const pdf = new jsPDF({
       orientation: 'landscape',
       unit: 'mm',
       format: [222, 157.6]
     });
-    pdf.addImage(imgData, 'PNG', 0, 0);
+    pdf.addImage(imgData, 'PNG', 0, 0, 222, 157.6); // ضبط الأبعاد هنا
     pdf.save('شهادة حضور');
   });
 };
@@ -249,14 +249,14 @@ const createPDF = () => {
 const createPDF2 = () => {
   const input = document.getElementById('pdf-content2');
 
-  html2canvas(input).then((canvas) => {
+  html2canvas(input, { scale: 2 }).then((canvas) => { // استخدم scale لتحسين الدقة
     const imgData = canvas.toDataURL('image/png');
     const pdf = new jsPDF({
       orientation: 'landscape',
       unit: 'mm',
       format: [223, 157.6]
     });
-    pdf.addImage(imgData, 'PNG', 0, 0);
+    pdf.addImage(imgData, 'PNG', 0, 0, 223, 157.6); // ضبط الأبعاد هنا
     pdf.save('شهادة تخرج');
   });
 };
@@ -264,14 +264,14 @@ const createPDF2 = () => {
 const createPDF3 = () => {
   const input = document.getElementById('pdf-content3');
 
-  html2canvas(input).then((canvas) => {
+  html2canvas(input, { scale: 2 }).then((canvas) => { // استخدم scale لتحسين الدقة
     const imgData = canvas.toDataURL('image/png');
     const pdf = new jsPDF({
-      orientation: 'portrait', // التوجيه: landscape (أفقي) أو portrait (رأسي)
+      orientation: 'portrait',
       unit: 'mm',
-      format: [222, 157.6]
+      format: 'a4'
     });
-    pdf.addImage(imgData, 'PNG', 0, 0);
+    pdf.addImage(imgData, 'PNG', 0, 0, 210, 297); // ضبط الأبعاد هنا (A4)
     pdf.save('توصية');
   });
 };

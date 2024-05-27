@@ -46,7 +46,7 @@ export default function MineSection({ nAVbAR, version }) {
       .catch(error => {
         console.error('Error fetching data: ', error);
       });
-  }, [selectedValue]);
+  }, [Data]);
 
   const [deleted, setDeleted] = useState(false);
 
