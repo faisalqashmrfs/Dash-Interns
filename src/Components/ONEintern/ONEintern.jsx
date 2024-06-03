@@ -246,50 +246,48 @@ export default function ONEintern({ nAVbAR, setnAVbAR }) {
     </section>
   )
 }
-
-
-
 const createPDF = () => {
   const input = document.getElementById('pdf-content');
 
-  html2canvas(input, { scale: 2 }).then((canvas) => {
-    const imgData = canvas.toDataURL('image/png');
+  html2canvas(input, { scale: 5 }).then((canvas) => { // استخدم scale أعلى لتحسين الدقة
+    const imgData = canvas.toDataURL('image/png', 1.0); // استخدم الجودة القصوى عند التحويل
     const pdf = new jsPDF({
       orientation: 'landscape',
       unit: 'mm',
       format: [222, 157.6]
     });
-    pdf.addImage(imgData, 'PNG', 0, 0, 222, 157.6); // ضبط الأبعاد هنا
-    pdf.save('شهادة حضور');
+    pdf.addImage(imgData, 'PNG', 0, 0, 222, 157.6, undefined, 'FAST'); // استخدم 'FAST' لتحسين الأداء
+    pdf.save('شهادة حضور.pdf');
   });
 };
 
 const createPDF2 = () => {
   const input = document.getElementById('pdf-content2');
 
-  html2canvas(input, { scale: 2 }).then((canvas) => {
-    const imgData = canvas.toDataURL('image/png');
+  html2canvas(input, { scale: 5 }).then((canvas) => { // استخدم scale أعلى لتحسين الدقة
+    const imgData = canvas.toDataURL('image/png', 1.0); // استخدم الجودة القصوى عند التحويل
     const pdf = new jsPDF({
       orientation: 'landscape',
       unit: 'mm',
       format: [223, 157.6]
     });
-    pdf.addImage(imgData, 'PNG', 0, 0, 223, 157.6);
-    pdf.save('شهادة تخرج');
+    pdf.addImage(imgData, 'PNG', 0, 0, 223, 157.6, undefined, 'FAST'); // استخدم 'FAST' لتحسين الأداء
+    pdf.save('شهادة تخرج.pdf');
   });
 };
 
 const createPDF3 = () => {
   const input = document.getElementById('pdf-content3');
 
-  html2canvas(input, { scale: 2 }).then((canvas) => {
-    const imgData = canvas.toDataURL('image/png');
+  html2canvas(input, { scale: 5 }).then((canvas) => { // استخدم scale أعلى لتحسين الدقة
+    const imgData = canvas.toDataURL('image/png', 1.0); // استخدم الجودة القصوى عند التحويل
     const pdf = new jsPDF({
       orientation: 'portrait',
       unit: 'mm',
       format: 'a4'
     });
-    pdf.addImage(imgData, 'PNG', 0, 0, 210, 297);
-    pdf.save('توصية');
+    pdf.addImage(imgData, 'PNG', 0, 0, 210, 297, undefined, 'FAST'); // استخدم 'FAST' لتحسين الأداء
+    pdf.save('توصية.pdf');
   });
 };
+
