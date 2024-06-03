@@ -3,14 +3,14 @@
     width: 100%;
     height: calc(100vh - 60px);
     padding-left: 250px;
-    transition: .2s;
+    transition: .1s;
 }
 .MainSECTION-off
 {
     width: 100%;
     height: calc(100vh - 60px);
     padding-left: 0px;
-    transition: .2s;
+    transition: .1s;
 }
 .ALL-Data
 {
