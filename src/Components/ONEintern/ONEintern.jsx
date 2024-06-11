@@ -6,9 +6,10 @@ import React, { useEffect, useState } from 'react';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import QRCode from 'qrcode.react';
-import focal from './../../assets/focal X 1 (1).png';
-import focalx from './../../assets/Group 7.png';
+import focal from './../../assets/focal X 1.svg';
+import focalx from './../../assets/Group 7.svg';
 import axios from 'axios';
+import stamp1 from './../../assets/Images/e-sign-stamp1.svg';
 
 
 export default function ONEintern({ nAVbAR, setnAVbAR }) {
@@ -92,9 +93,9 @@ export default function ONEintern({ nAVbAR, setnAVbAR }) {
             </div>
           </div>
           <div className='Controle-Certificate'>
-            <button onClick={createPDF}>شهادة حضور</button>
-            <button onClick={createPDF2}>شهادة تخرج</button>
-            <button onClick={createPDF3}>رسالة توصية</button>
+            <button onClick={() => createPDF(Data.name)}>شهادة حضور</button>
+            <button onClick={() => createPDF2(Data.name)}>شهادة تخرج</button>
+            <button onClick={() => createPDF3(Data.name)}>رسالة توصية</button>
           </div>
 
         </section>
@@ -192,23 +193,25 @@ export default function ONEintern({ nAVbAR, setnAVbAR }) {
               <h3>Recommendation Letter</h3>
               <div className='dESCRIP'>
                 <h5>To whom it may concern,</h5>
-                <p>I am writing to recommend <span className='h1'>{Data.name}</span><br />
+                {/* <p>I am writing to recommend <span className='h1'>{Data.name}</span><br /> */}
+                <p>I am writing to recommend <span className='h1'>{Data.name.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</span><br />
                   He successfully completed a four-month training program<br />
                   in {Data.specialization} from {Data.startDate} to {Data.endDate} .
                 </p>
-                <p>{Data.name} is a motivated individual with a passion for {Data.specialization}. He demonstrated exceptional creativity, attention to detail, technical expertise, teamwork, and adaptability during the program.
+                <p>{Data.name.split(' ')[0].charAt(0).toUpperCase() + Data.name.split(' ')[0].slice(1)} is a motivated individual with a passion for {Data.specialization}. He demonstrated exceptional creativity, attention to detail, technical expertise, teamwork, and adaptability during the program.
                 </p>
                 <p>
-                  {Data.name}  would be a valuable asset to your company.<br />
+                  {Data.name.split(' ')[0].charAt(0).toUpperCase() + Data.name.split(' ')[0].slice(1)}  would be a valuable asset to your company.<br />
                   He has the skills and work ethic to thrive in {Data.specialization}.<br />
                   I highly recommend him for employment and encourage you to consider his application.
                 </p>
                 <p>
-                  Please feel free to contact me if you require further information about  {Data.name.split(' ')[0]}'s qualifications and performance.
+                  Please feel free to contact me if you require further information about  {Data.name.split(' ')[0].charAt(0).toUpperCase() + Data.name.split(' ')[0].slice(1)}'s qualifications and performance.
                 </p>
               </div>
               <h6>Thank You,</h6>
               <div className='Thank-Name'>
+                <img src={stamp1} alt="" />
                 <p>
                   <span>Alaa Darwish</span>
                   <span>Founder & CEO</span>
@@ -246,7 +249,7 @@ export default function ONEintern({ nAVbAR, setnAVbAR }) {
     </section>
   )
 }
-const createPDF = () => {
+const createPDF = (name) => {
   const input = document.getElementById('pdf-content');
 
   html2canvas(input, { scale: 5 }).then((canvas) => { // استخدم scale أعلى لتحسين الدقة
@@ -257,11 +260,11 @@ const createPDF = () => {
       format: [222, 157.6]
     });
     pdf.addImage(imgData, 'PNG', 0, 0, 222, 157.6, undefined, 'FAST'); // استخدم 'FAST' لتحسين الأداء
-    pdf.save('شهادة حضور.pdf');
+    pdf.save(`${name}.pdf`);
   });
 };
 
-const createPDF2 = () => {
+const createPDF2 = (name) => {
   const input = document.getElementById('pdf-content2');
 
   html2canvas(input, { scale: 5 }).then((canvas) => { // استخدم scale أعلى لتحسين الدقة
@@ -272,11 +275,11 @@ const createPDF2 = () => {
       format: [223, 157.6]
     });
     pdf.addImage(imgData, 'PNG', 0, 0, 223, 157.6, undefined, 'FAST'); // استخدم 'FAST' لتحسين الأداء
-    pdf.save('شهادة تخرج.pdf');
+    pdf.save(`${name}.pdf`);
   });
 };
 
-const createPDF3 = () => {
+const createPDF3 = (name) => {
   const input = document.getElementById('pdf-content3');
 
   html2canvas(input, { scale: 5 }).then((canvas) => { // استخدم scale أعلى لتحسين الدقة
@@ -287,7 +290,7 @@ const createPDF3 = () => {
       format: 'a4'
     });
     pdf.addImage(imgData, 'PNG', 0, 0, 210, 297, undefined, 'FAST'); // استخدم 'FAST' لتحسين الأداء
-    pdf.save('توصية.pdf');
+    pdf.save(`${name}.pdf`);
   });
 };
 
