@@ -197,7 +197,7 @@ export default function AddIntern({ nAVbAR, setnAVbAR, versionid, coachs }) {
                                 <label htmlFor="">Certificate Type</label>
                                 <select name="" id="" value={certificate_type} onChange={Handelcertificate_type}>
                                     <option value="graduation">شهادة تخرج</option>
-                                    <option value="presence">شهادة إتمام تدريب</option>
+                                    <option value="presence">شهادة حضور</option>
                                 </select>
                             </div>
 

@@ -1,22 +1,26 @@
-import { IoMdArrowRoundBack } from 'react-icons/io'
-import NavSidBar from '../NavSidBar/NavSidBar'
-import './ONEintern.css'
-import { Link, useParams } from 'react-router-dom'
 import React, { useEffect, useState } from 'react';
+import { parse, format } from 'date-fns';
+import axios from 'axios';
+import { Link, useParams } from 'react-router-dom';
+import { IoMdArrowRoundBack } from 'react-icons/io';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import QRCode from 'qrcode.react';
+
+import NavSidBar from '../NavSidBar/NavSidBar';
 import focal from './../../assets/focal X 1.svg';
 import focalx from './../../assets/Group 7.svg';
-import axios from 'axios';
 import stamp1 from './../../assets/Images/e-sign-stamp1.svg';
-
+import './ONEintern.css';
 
 export default function ONEintern({ nAVbAR, setnAVbAR }) {
 
   const { id } = useParams();
   const token = localStorage.getItem('token');
   const [Data, setData] = useState();
+  const [start, setstart] = useState('');
+  const [end, setend] = useState('');
+  const [text, setText] = useState('');
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -29,14 +33,43 @@ export default function ONEintern({ nAVbAR, setnAVbAR }) {
             }
           }
         );
-        setData(response.data);
-        console.log(Data);
+        const data = response.data;
+        setData(data);
+        setstart(data.startDate);
+        setend(data.endDate);
+        
+        const wordsToRemove = ['Lvl.1', 'Lvl.2', 'Lvl.3'];
+        const updatedText = removeWords(data.specialization, wordsToRemove);
+        setText(updatedText);
       } catch (error) {
         console.error('Error fetching users:', error);
       }
     };
+
     fetchUsers();
-  }, []);
+  }, [id, token]);
+
+  const removeWords = (text, wordsToRemove) => {
+    wordsToRemove.forEach(word => {
+      const regex = new RegExp(`\\b${word}\\b`, 'gi');
+      text = text.replace(regex, '');
+    });
+    return text.replace(/\s+/g, ' ').trim();
+  };
+
+  const parseDate = (dateString, formatString) => {
+    try {
+      const date = parse(dateString, 'yyyy-MM-dd', new Date());
+      return format(date, formatString);
+    } catch (error) {
+      console.error('Error parsing date:', error);
+      return dateString;
+    }
+  };
+
+  const formattedStart = parseDate(start, 'MMMM yyyy');
+  const formattedEnd = parseDate(end, 'MMMM yyyy');
+  const formattedEnd2 = parseDate(end, 'dd/MM/yyyy');
 
   return (
     <section className='OneIntern-certificate'>
@@ -193,16 +226,15 @@ export default function ONEintern({ nAVbAR, setnAVbAR }) {
               <h3>Recommendation Letter</h3>
               <div className='dESCRIP'>
                 <h5>To whom it may concern,</h5>
-                {/* <p>I am writing to recommend <span className='h1'>{Data.name}</span><br /> */}
                 <p>I am writing to recommend <span className='h1'>{Data.name.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</span><br />
                   He successfully completed a four-month training program<br />
-                  in {Data.specialization} from {Data.startDate} to {Data.endDate} .
+                  in {Data.specialization} from {formattedStart} to <br /> {formattedEnd} .
                 </p>
-                <p>{Data.name.split(' ')[0].charAt(0).toUpperCase() + Data.name.split(' ')[0].slice(1)} is a motivated individual with a passion for {Data.specialization}. He demonstrated exceptional creativity, attention to detail, technical expertise, teamwork, and adaptability during the program.
+                <p>{Data.name.split(' ')[0].charAt(0).toUpperCase() + Data.name.split(' ')[0].slice(1)} is a motivated individual with a passion for {text}. He demonstrated exceptional creativity, attention to detail, technical expertise, teamwork, and adaptability during the program.
                 </p>
                 <p>
                   {Data.name.split(' ')[0].charAt(0).toUpperCase() + Data.name.split(' ')[0].slice(1)}  would be a valuable asset to your company.<br />
-                  He has the skills and work ethic to thrive in {Data.specialization}.<br />
+                  He has the skills and work ethic to thrive in {text}.<br />
                   I highly recommend him for employment and encourage you to consider his application.
                 </p>
                 <p>
@@ -217,7 +249,7 @@ export default function ONEintern({ nAVbAR, setnAVbAR }) {
                   <span>Founder & CEO</span>
                 </p>
                 <p>
-                  Date: {Data.endDate}
+                  Date: {formattedEnd2}
                 </p>
               </div>
               <div className='end-certificate'>

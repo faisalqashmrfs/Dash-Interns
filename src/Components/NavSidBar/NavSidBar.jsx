@@ -85,6 +85,12 @@ export default function NavSidBar({ setnAVbAR, nAVbAR , version}) {
                         Add Coachs
                     </Link>
                     <Link
+                        to={'/MainDash/'}
+                        onClick={() => setnAVbAR(false)}
+                    >
+                        contracts
+                    </Link>
+                    <Link
                         onClick={() => handleLogin()} 
                         className='Loge-Out'
                     >

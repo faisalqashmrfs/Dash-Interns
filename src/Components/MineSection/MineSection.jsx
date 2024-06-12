@@ -1,34 +1,33 @@
-import { Link } from 'react-router-dom'
-import './MineSection.css'
+import { Link } from 'react-router-dom';
+import './MineSection.css';
 import { FaEye, FaPlusCircle } from "react-icons/fa";
 import { MdDeleteForever, MdModeEdit } from 'react-icons/md';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 export default function MineSection({ nAVbAR, version }) {
-
-  const [Masseg, setMasseg] = useState(false)
+  const [Masseg, setMasseg] = useState(false);
   const token = localStorage.getItem('token');
-  const [deleteID, setdeleteID] = useState()
+  const [deleteID, setdeleteID] = useState();
   const [Data, setData] = useState([]);
-  const [virgn , setvirgn] = useState("")
-  
+  const [virgn , setvirgn] = useState("");
   const [selectedValue, setSelectedValue] = useState(() => {
-
     return localStorage.getItem('selectedValue') || '';
   });
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 75;
 
   const handleChange = (event) => {
     const value = event.target.value;
     setSelectedValue(value);
     localStorage.setItem('selectedValue', value);
-    setvirgn(`version=${selectedValue}`)
+    setvirgn(`version=${selectedValue}`);
     console.log();
     localStorage.setItem('IndexVirgen', event.target.selectedIndex - 1);
     localStorage.setItem('IDVirgen', version[event.target.selectedIndex - 1].id);
-    window.location.reload() 
+    window.location.reload();
   };
-  
 
   useEffect(() => {
     axios.get(`https://test.black-analysis-solutions.com/api/intern?${selectedValue ? `version=${selectedValue}` : `''`}`,
@@ -46,12 +45,12 @@ export default function MineSection({ nAVbAR, version }) {
       .catch(error => {
         console.error('Error fetching data: ', error);
       });
-  }, [Data]);
+  }, [selectedValue, token]);
 
   const [deleted, setDeleted] = useState(false);
 
   const handleDelete = () => {
-    setMasseg(false)
+    setMasseg(false);
     axios.delete(`https://test.black-analysis-solutions.com/api/intern/${deleteID} `,
       {
         headers: {
@@ -70,17 +69,27 @@ export default function MineSection({ nAVbAR, version }) {
   };
 
   function HandelDeletUser(id) {
-    setMasseg(true)
-    setdeleteID(id)
+    setMasseg(true);
+    setdeleteID(id);
   }
-  const [virgnx , setvirgnx] = useState("")
 
-  function reseteData()
-  {
+  function reseteData() {
     setSelectedValue(null);
     localStorage.removeItem('selectedValue');
-    window.location.reload()
+    window.location.reload();
   }
+
+  const handleNextPage = () => {
+    setCurrentPage(currentPage + 1);
+  };
+
+  const handlePreviousPage = () => {
+    setCurrentPage(currentPage - 1);
+  };
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = Data.slice(indexOfFirstItem, indexOfLastItem);
 
   return (
     <section className={nAVbAR ? 'MainSECTION' : 'MainSECTION-off'}>
@@ -102,9 +111,15 @@ export default function MineSection({ nAVbAR, version }) {
           <button className='ResateData' onClick={reseteData} >reset</button>
         </div>
         <button className={nAVbAR ? 'VirgenWorkspacs' : 'VirgenWorkspacs2'} >version Workspace : {selectedValue ? selectedValue : 'All Data'}</button>
+        <div className="pagination" >
+          <button onClick={handlePreviousPage} disabled={currentPage === 1}>Previous</button>
+          <p>{currentPage}</p>
+          <button onClick={handleNextPage} disabled={indexOfLastItem >= Data.length}>Next</button>
+        </div>
         <table>
           <thead>
             <tr>
+              <th>ID</th>
               <th>Name</th>
               <th>Address</th>
               <th>E-Mail</th>
@@ -115,8 +130,9 @@ export default function MineSection({ nAVbAR, version }) {
             </tr>
           </thead>
           <tbody>
-            {Data.map((row, index) => (
+            {currentItems.map((row, index) => (
               <tr key={index}>
+                <td>{row.id}</td>
                 <td>{row.name}</td>
                 <td>{row.address}</td>
                 <td>{row.email}</td>
@@ -145,7 +161,7 @@ export default function MineSection({ nAVbAR, version }) {
         </table>
         <section className='DeletingMasseg-box'>
           <div className={Masseg ? 'DeletingMasseg' : 'DeletingMasseg-off'}>
-            <h2>Do You Wont To Delet This Row</h2>
+            <h2>Do You Want To Delete This Row</h2>
             <div>
               <button className='Yes'
                 onClick={handleDelete}

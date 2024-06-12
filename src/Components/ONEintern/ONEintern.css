@@ -361,3 +361,22 @@
     position: absolute;
     transform: translate(-10px , 0px);
 }
+
+.pagination
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: -15px;
+    margin-bottom: 30px;
+}
+.pagination button
+{
+    width: 100px;
+    height: 30px;
+    background-color: #FF8500;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}

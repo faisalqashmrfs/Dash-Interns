@@ -256,3 +256,11 @@
 {
     outline: none;
 }
+.pagination p 
+{
+    color: #FF8500;
+    border: 1px solid #FF8500;
+    padding: 5px 10px;
+    font-weight: 600;
+    border-radius: 50%;
+}
