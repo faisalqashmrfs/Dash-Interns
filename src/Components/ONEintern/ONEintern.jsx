@@ -12,6 +12,7 @@ import focal from './../../assets/focal X 1.svg';
 import focalx from './../../assets/Group 7.svg';
 import stamp1 from './../../assets/Images/e-sign-stamp1.svg';
 import './ONEintern.css';
+import { ClimbingBoxLoader } from 'react-spinners';
 
 export default function ONEintern({ nAVbAR, setnAVbAR }) {
 
@@ -21,8 +22,10 @@ export default function ONEintern({ nAVbAR, setnAVbAR }) {
   const [start, setstart] = useState('');
   const [end, setend] = useState('');
   const [text, setText] = useState('');
+  const [looder, setlooder] = useState(false);
 
   useEffect(() => {
+    setlooder(true)
     const fetchUsers = async () => {
       try {
         const response = await axios.get(`https://test.black-analysis-solutions.com/api/intern/${id}`,
@@ -41,6 +44,7 @@ export default function ONEintern({ nAVbAR, setnAVbAR }) {
         const wordsToRemove = ['Lvl.1', 'Lvl.2', 'Lvl.3'];
         const updatedText = removeWords(data.specialization, wordsToRemove);
         setText(updatedText);
+        setlooder(false)
       } catch (error) {
         console.error('Error fetching users:', error);
       }
@@ -73,6 +77,13 @@ export default function ONEintern({ nAVbAR, setnAVbAR }) {
 
   return (
     <section className='OneIntern-certificate'>
+      {looder ?
+                <div className='Looder-Geniral'>
+                    <ClimbingBoxLoader color="#FF8500" size={20} />
+                </div>
+                :
+                ''
+            }
       {Data ? <section>
         <NavSidBar nAVbAR={nAVbAR} setnAVbAR={setnAVbAR} />
         <section className={nAVbAR ? 'DataIntern-off' : 'DataIntern'}>

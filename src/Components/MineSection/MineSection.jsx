@@ -4,13 +4,17 @@ import { FaEye, FaPlusCircle } from "react-icons/fa";
 import { MdDeleteForever, MdModeEdit } from 'react-icons/md';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { ClimbingBoxLoader } from 'react-spinners';
 
 export default function MineSection({ nAVbAR, version }) {
+
   const [Masseg, setMasseg] = useState(false);
   const token = localStorage.getItem('token');
   const [deleteID, setdeleteID] = useState();
   const [Data, setData] = useState([]);
-  const [virgn , setvirgn] = useState("");
+  const [virgn, setvirgn] = useState("");
+  const [looder, setlooder] = useState(false)
+
   const [selectedValue, setSelectedValue] = useState(() => {
     return localStorage.getItem('selectedValue') || '';
   });
@@ -30,6 +34,7 @@ export default function MineSection({ nAVbAR, version }) {
   };
 
   useEffect(() => {
+    setlooder(true)
     axios.get(`https://test.black-analysis-solutions.com/api/intern?${selectedValue ? `version=${selectedValue}` : `''`}`,
       {
         headers: {
@@ -40,6 +45,7 @@ export default function MineSection({ nAVbAR, version }) {
     )
       .then(response => {
         setData(response.data.data);
+        setlooder(false)
         console.log(Data);
       })
       .catch(error => {
@@ -93,6 +99,13 @@ export default function MineSection({ nAVbAR, version }) {
 
   return (
     <section className={nAVbAR ? 'MainSECTION' : 'MainSECTION-off'}>
+      {looder ?
+        <div className='Looder-Geniral'>
+          <ClimbingBoxLoader color="#FF8500"   size={20}/>
+        </div>
+        :
+        ''
+      }
       <section className='ALL-Data'>
         <div className={nAVbAR ? 'Fq-NavOptions-off' : 'Fq-NavOptions'}>
           <Link
@@ -104,7 +117,7 @@ export default function MineSection({ nAVbAR, version }) {
           </Link>
           <select name="" id="" className='SelectedV' onChange={handleChange}>
             <option value="">select V</option>
-            {version.map((version , index) => (
+            {version.map((version, index) => (
               <option key={version.id} value={version.name}>{version.name}</option>
             ))}
           </select>

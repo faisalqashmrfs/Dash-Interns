@@ -2,6 +2,7 @@ import { MdDeleteForever, MdModeEdit } from 'react-icons/md'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { ClimbingBoxLoader } from 'react-spinners';
 
 export default function VersionSiction({ nAVbAR , version}) {
 

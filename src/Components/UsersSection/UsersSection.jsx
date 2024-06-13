@@ -4,17 +4,20 @@ import { FaEye } from 'react-icons/fa'
 import { MdDeleteForever, MdModeEdit } from 'react-icons/md'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { ClimbingBoxLoader } from 'react-spinners'
 
 export default function UsersSection({ nAVbAR }) {
 
   const [Masseg, setMasseg] = useState(false)
   const [deleteID, setdeleteID] = useState()
+  const [looder, setlooder] = useState(false)
 
   const token = localStorage.getItem('token');
 
   const [Data, setData] = useState([]);
 
   useEffect(() => {
+    setlooder(true)
     axios.get('https://test.black-analysis-solutions.com/api/admins',
       {
         headers: {
@@ -25,11 +28,12 @@ export default function UsersSection({ nAVbAR }) {
     )
       .then(response => {
         setData(response.data.data);
+        setlooder(false)
       })
       .catch(error => {
         console.error('Error fetching data: ', error);
       });
-  }, [Data]);
+  }, [token]);
 
     const [deleted, setDeleted] = useState(false);
   
@@ -60,6 +64,13 @@ export default function UsersSection({ nAVbAR }) {
 
   return (
     <section className={nAVbAR ? 'MainSECTION' : 'MainSECTION-off'}>
+      {looder ?
+                <div className='Looder-Geniral'>
+                    <ClimbingBoxLoader color="#FF8500" size={20} />
+                </div>
+                :
+                ''
+            }
       <section className='ALL-Data'>
         <div className={nAVbAR ? 'Fq-NavOptions-off' : 'Fq-NavOptions'}>
           <Link

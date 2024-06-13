@@ -4,7 +4,7 @@ import { TfiAlignJustify, TfiAlignLeft } from "react-icons/tfi";
 import axios from 'axios';
 import { useState } from 'react';
 
-export default function NavSidBar({ setnAVbAR, nAVbAR , version}) {
+export default function NavSidBar({ setnAVbAR, nAVbAR, version }) {
 
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
@@ -12,26 +12,26 @@ export default function NavSidBar({ setnAVbAR, nAVbAR , version}) {
 
     const handleLogin = async () => {
         try {
-          const response = await axios.post('https://test.black-analysis-solutions.com/api/logout',
-          {},
-            {
-              headers: {
-                'Accept': 'application/json',
-                'Authorization': `Bearer ${token}`,
-              }
+            const response = await axios.post('https://test.black-analysis-solutions.com/api/logout',
+                {},
+                {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Authorization': `Bearer ${token}`,
+                    }
+                }
+            );
+            if (response.status === 200) {
+                navigate('/');
+            } else {
+                setError('خطأ في تسجيل الخروج.');
             }
-          );
-          if (response.status === 200) {
-            navigate('/');
-          } else {
-            setError('خطأ في تسجيل الخروج.');
-          }
         } catch (error) {
-          console.error('حدث خطأ غير متوقع:', error);
-          setError('حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.');
+            console.error('حدث خطأ غير متوقع:', error);
+            setError('حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.');
         }
-      };
-    
+    };
+
     return (
         <section className='SidNavBar'>
             <div className={nAVbAR ? 'SideBar-isOPPEN' : 'SideBar-iscLOSE'} >
@@ -91,7 +91,7 @@ export default function NavSidBar({ setnAVbAR, nAVbAR , version}) {
                         contracts
                     </Link>
                     <Link
-                        onClick={() => handleLogin()} 
+                        onClick={() => handleLogin()}
                         className='Loge-Out'
                     >
                         Loge Out
