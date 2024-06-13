@@ -40,7 +40,7 @@ export default function ONEintern({ nAVbAR, setnAVbAR }) {
         setData(data);
         setstart(data.startDate);
         setend(data.endDate);
-        
+        console.log(Data);
         const wordsToRemove = ['Lvl.1', 'Lvl.2', 'Lvl.3'];
         const updatedText = removeWords(data.specialization, wordsToRemove);
         setText(updatedText);
@@ -238,15 +238,15 @@ export default function ONEintern({ nAVbAR, setnAVbAR }) {
               <div className='dESCRIP'>
                 <h5>To whom it may concern,</h5>
                 <p>I am writing to recommend <span className='h1'>{Data.name.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</span><br />
-                  He successfully completed a four-month training program<br />
-                  in {Data.specialization} from {formattedStart} to <br /> {formattedEnd} .
+                  {Data.genders === 'male' ? 'He':'She'} successfully completed a four-months training program<br />
+                  in {Data.specialization} from {formattedStart} to {formattedEnd} .
                 </p>
-                <p>{Data.name.split(' ')[0].charAt(0).toUpperCase() + Data.name.split(' ')[0].slice(1)} is a motivated individual with a passion for {text}. He demonstrated exceptional creativity, attention to detail, technical expertise, teamwork, and adaptability during the program.
+                <p>{Data.name.split(' ')[0].charAt(0).toUpperCase() + Data.name.split(' ')[0].slice(1)} is a motivated individual with a passion for {text}. {Data.genders === 'male' ? 'He':'She'} demonstrated exceptional creativity, attention to detail, technical expertise, teamwork, and adaptability during the program.
                 </p>
                 <p>
                   {Data.name.split(' ')[0].charAt(0).toUpperCase() + Data.name.split(' ')[0].slice(1)}  would be a valuable asset to your company.<br />
-                  He has the skills and work ethic to thrive in {text}.<br />
-                  I highly recommend him for employment and encourage you to consider his application.
+                  {Data.genders === 'male' ? 'He':'She'} has the skills and work ethic to thrive in {text}.<br />
+                  I highly recommend {Data.genders === 'male' ? 'him':'her'} for employment and encourage you to consider {Data.genders === 'male' ? 'his':'her'} application.
                 </p>
                 <p>
                   Please feel free to contact me if you require further information about  {Data.name.split(' ')[0].charAt(0).toUpperCase() + Data.name.split(' ')[0].slice(1)}'s qualifications and performance.
