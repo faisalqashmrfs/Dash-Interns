@@ -4,6 +4,7 @@ import './AddUser.css'
 import { IoMdArrowRoundBack } from 'react-icons/io'
 import { useState } from 'react'
 import axios from 'axios'
+import { ClimbingBoxLoader } from 'react-spinners'
 
 export default function AddUser({ nAVbAR, setnAVbAR }) {
 
@@ -12,6 +13,7 @@ export default function AddUser({ nAVbAR, setnAVbAR }) {
     const [name, setname] = useState('')
     const [email, setemail] = useState('')
     const [pass, setpass] = useState('')
+    const [looder, setlooder] = useState(false)
 
     const [response, setResponse] = useState(null);
     const [error, setError] = useState(null);
@@ -29,6 +31,7 @@ export default function AddUser({ nAVbAR, setnAVbAR }) {
     }
 
     const fetchData = async () => {
+        setlooder(true)
         try {
             const headers = {
                 'Accept': 'application/json',
@@ -40,16 +43,22 @@ export default function AddUser({ nAVbAR, setnAVbAR }) {
                 email: email,
                 password: pass,
             };
-
-            console.log(body);
-
             const result = await axios.post('https://test.black-analysis-solutions.com/api/admins', body, { headers });
+            setlooder(false)
         } catch (error) {
             setError(error);
+            setlooder(false)
         }
     };
     return (
         <section>
+            {looder ?
+                <div className='Looder-Geniral'>
+                    <ClimbingBoxLoader color="#FF8500" size={20} />
+                </div>
+                :
+                ''
+            }
             <NavSidBar nAVbAR={nAVbAR} setnAVbAR={setnAVbAR} />
             <section className={!nAVbAR ? 'AddUser' : 'AddUser-off'}>
                 <Link

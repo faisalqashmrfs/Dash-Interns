@@ -4,6 +4,7 @@ import './AddIntern.css'
 import { IoMdArrowRoundBack } from 'react-icons/io'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { ClimbingBoxLoader } from 'react-spinners'
 
 
 
@@ -29,6 +30,7 @@ export default function AddIntern({ nAVbAR, setnAVbAR, versionid, coachs }) {
     const [version_interns_id, setversion_interns_id] = useState()
     const [certificate_type, setcertificate_type] = useState('graduation')
     const [genders, setgenders] = useState('male')
+    const [looder, setlooder] = useState(false)
 
     useEffect(() => {
         // مزامنة القيم
@@ -57,6 +59,7 @@ export default function AddIntern({ nAVbAR, setnAVbAR, versionid, coachs }) {
 
 
     const fetchData = async () => {
+        setlooder(true)
         try {
             const headers = {
                 'Accept': 'application/json',
@@ -76,8 +79,8 @@ export default function AddIntern({ nAVbAR, setnAVbAR, versionid, coachs }) {
                 certificate_type: certificate_type,
                 genders: genders,
             };
-            console.log(body);
             const result = await axios.post('https://test.black-analysis-solutions.com/api/intern', body, { headers });
+            setlooder(false)
         } catch (error) {
             setError(error);
         }
@@ -127,6 +130,13 @@ export default function AddIntern({ nAVbAR, setnAVbAR, versionid, coachs }) {
 
     return (
         <>
+        {looder ?
+                <div className='Looder-Geniral'>
+                    <ClimbingBoxLoader color="#FF8500" size={20} />
+                </div>
+                :
+                ''
+            }
             {coachs ? <div>
                 <NavSidBar nAVbAR={nAVbAR} setnAVbAR={setnAVbAR} />
                 <div className={!nAVbAR ? 'AddInternForm' : 'AddInternForm-off'}>

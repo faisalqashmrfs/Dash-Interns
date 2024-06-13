@@ -3,8 +3,9 @@ import { useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import NavSidBar from '../NavSidBar/NavSidBar'
+import { ClimbingBoxLoader } from 'react-spinners'
 
-export default function Addcoachs({ nAVbAR, setnAVbAR , versionid}) {
+export default function Addcoachs({ nAVbAR, setnAVbAR, versionid }) {
 
   const token = localStorage.getItem('token');
 
@@ -13,6 +14,7 @@ export default function Addcoachs({ nAVbAR, setnAVbAR , versionid}) {
   const [specialization, setSspecialization] = useState('')
   const [type, settype] = useState('Host')
   const [version_intern_id, setversion_intern_id] = useState('')
+  const [looder, setlooder] = useState(false)
 
   const [response, setResponse] = useState(null);
   const [error, setError] = useState(null);
@@ -34,6 +36,7 @@ export default function Addcoachs({ nAVbAR, setnAVbAR , versionid}) {
   }
 
   const fetchData = async () => {
+    setlooder(true)
     try {
       const headers = {
         'Accept': 'application/json',
@@ -47,9 +50,10 @@ export default function Addcoachs({ nAVbAR, setnAVbAR , versionid}) {
         version_intern_id: version_intern_id,
       };
 
-      console.log(body , token);
+      console.log(body, token);
 
       const result = await axios.post('https://test.black-analysis-solutions.com/api/coachs', body, { headers });
+      setlooder(false)
     } catch (error) {
       setError(error);
     }
@@ -58,10 +62,17 @@ export default function Addcoachs({ nAVbAR, setnAVbAR , versionid}) {
   setTimeout(() => {
     setversion_intern_id(versionid.id)
     setnamex(versionid.name)
-}, 100);
+  }, 100);
 
   return (
     <section>
+      {looder ?
+        <div className='Looder-Geniral'>
+          <ClimbingBoxLoader color="#FF8500" size={20} />
+        </div>
+        :
+        ''
+      }
       <NavSidBar nAVbAR={nAVbAR} setnAVbAR={setnAVbAR} />
       <section className={!nAVbAR ? 'AddUser' : 'AddUser-off'}>
         <Link

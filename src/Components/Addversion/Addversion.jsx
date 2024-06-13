@@ -3,6 +3,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import NavSidBar from '../NavSidBar/NavSidBar'
+import { ClimbingBoxLoader } from 'react-spinners'
 
 export default function AddVersion({ nAVbAR, setnAVbAR }) {
 
@@ -11,6 +12,7 @@ export default function AddVersion({ nAVbAR, setnAVbAR }) {
   const [name, setname] = useState('')
   const [StartData, setStartData] = useState('')
   const [EndData, setEndData] = useState('')
+  const [looder, setlooder] = useState(false)
 
   const [response, setResponse] = useState(null);
   const [error, setError] = useState(null);
@@ -28,6 +30,7 @@ export default function AddVersion({ nAVbAR, setnAVbAR }) {
   }
 
   const fetchData = async () => {
+    setlooder(true)
     try {
       const headers = {
         'Accept': 'application/json',
@@ -43,6 +46,7 @@ export default function AddVersion({ nAVbAR, setnAVbAR }) {
       console.log(body , token);
 
       const result = await axios.post('https://test.black-analysis-solutions.com/api/version', body, { headers });
+      setlooder(false)
     } catch (error) {
       setError(error);
     }
@@ -50,6 +54,13 @@ export default function AddVersion({ nAVbAR, setnAVbAR }) {
 
   return (
     <section>
+      {looder ?
+                <div className='Looder-Geniral'>
+                    <ClimbingBoxLoader color="#FF8500" size={20} />
+                </div>
+                :
+                ''
+            }
       <NavSidBar nAVbAR={nAVbAR} setnAVbAR={setnAVbAR} />
       <section className={!nAVbAR ? 'AddUser' : 'AddUser-off'}>
         <Link

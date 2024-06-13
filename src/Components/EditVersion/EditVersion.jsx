@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link, useParams } from 'react-router-dom'
 import NavSidBar from '../NavSidBar/NavSidBar'
+import { ClimbingBoxLoader } from 'react-spinners'
 
 export default function EditVersion({ nAVbAR, setnAVbAR }) {
 
@@ -15,6 +16,7 @@ export default function EditVersion({ nAVbAR, setnAVbAR }) {
       const [name, setname] = useState('')
       const [StartData, setStartData] = useState('')
       const [EndData, setEndData] = useState('')
+      const [looder, setlooder] = useState(false)
 
       const [response, setResponse] = useState(null);
       const [error, setError] = useState(null);
@@ -32,6 +34,7 @@ export default function EditVersion({ nAVbAR, setnAVbAR }) {
       }
 
       useEffect(() => {
+            setlooder(true)
             const fetchUsers = async () => {
                   try {
                         const response = await axios.get(`https://test.black-analysis-solutions.com/api/version/${id}`,
@@ -46,11 +49,13 @@ export default function EditVersion({ nAVbAR, setnAVbAR }) {
                   } catch (error) {
                         console.error('Error fetching users:', error);
                   }
+                  setlooder(false)
             };
             fetchUsers();
       }, []);
 
       const fetchData = async () => {
+            setlooder(true)
             try {
                   const headers = {
                         'Accept': 'application/json',
@@ -66,14 +71,15 @@ export default function EditVersion({ nAVbAR, setnAVbAR }) {
                   console.log(body, token);
 
                   const result = await axios.put(`https://test.black-analysis-solutions.com/api/version/${id}`, body, { headers });
+                  setlooder(false)
             } catch (error) {
                   setError(error);
             }
       };
 
-      
 
-      
+
+
 
       useEffect(() => {
             setTimeout(() => {
@@ -86,6 +92,13 @@ export default function EditVersion({ nAVbAR, setnAVbAR }) {
 
       return (
             <section>
+                  {looder ?
+                        <div className='Looder-Geniral'>
+                              <ClimbingBoxLoader color="#FF8500" size={20} />
+                        </div>
+                        :
+                        ''
+                  }
                   <NavSidBar nAVbAR={nAVbAR} setnAVbAR={setnAVbAR} />
                   <section className={!nAVbAR ? 'AddUser' : 'AddUser-off'}>
                         <Link

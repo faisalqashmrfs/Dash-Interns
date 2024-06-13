@@ -46,6 +46,7 @@ export default function EditIntern({ nAVbAR, setnAVbAR, versionid, coachs }) {
 
 
     const fetchData = async () => {
+        setlooder(true)
         try {
             const headers = {
                 'Accept': 'application/json',
@@ -67,6 +68,7 @@ export default function EditIntern({ nAVbAR, setnAVbAR, versionid, coachs }) {
             };
             console.log(body);
             const result = await axios.put(`https://test.black-analysis-solutions.com/api/intern/${id}`, body, { headers });
+            setlooder(false)
         } catch (error) {
             setError(error);
         }

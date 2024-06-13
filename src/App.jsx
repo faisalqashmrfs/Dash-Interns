@@ -83,7 +83,7 @@ function App() {
       <Route path='/MainDash/Editversion/:id' element={<EditVersion nAVbAR={nAVbAR} setnAVbAR={setnAVbAR}/>} />
       <Route path='/MainDash/Coachs' element={<Coachs nAVbAR={nAVbAR} setnAVbAR={setnAVbAR} version={version} coachs={coachs}/>} />
       <Route path='/MainDash/Addcoachs' element={<Addcoachs nAVbAR={nAVbAR} setnAVbAR={setnAVbAR}  versionid={versionid}/>} />
-      <Route path='/MainDash/contracts' element={<Addcoachs nAVbAR={nAVbAR} setnAVbAR={setnAVbAR}  versionid={versionid}/>} />
+      {/* <Route path='/MainDash/contracts' element={<Addcoachs nAVbAR={nAVbAR} setnAVbAR={setnAVbAR}  versionid={versionid}/>} /> */}
     </Routes>
     </>
   )
