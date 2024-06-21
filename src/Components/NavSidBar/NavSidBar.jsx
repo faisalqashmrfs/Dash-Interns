@@ -85,7 +85,7 @@ export default function NavSidBar({ setnAVbAR, nAVbAR, version }) {
                         Add Coachs
                     </Link>
                     <Link
-                        to={'/MainDash/'}
+                        to={'/MainDash/contracts'}
                         onClick={() => setnAVbAR(false)}
                     >
                         contracts

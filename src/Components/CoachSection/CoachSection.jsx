@@ -63,6 +63,10 @@ export default function CoachSection({ nAVbAR , coachs}) {
                   >
                     <MdDeleteForever color='#FF8500' />
                   </Link>
+                  <Link to={`/MainDash/editcoachs/${row.id}`}
+                  >
+                    <MdModeEdit color='#FF8500' />
+                  </Link>
                 </td>
               </tr>
             ))}

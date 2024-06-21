@@ -1,20 +1,26 @@
-import { MdDeleteForever, MdModeEdit } from 'react-icons/md'
-import { useEffect, useState } from 'react'
-import axios from 'axios'
-import { Link } from 'react-router-dom'
-import { ClimbingBoxLoader } from 'react-spinners';
+import { MdDeleteForever, MdModeEdit } from 'react-icons/md';
+import { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
-export default function VersionSiction({ nAVbAR , version}) {
-
+export default function VersionSiction({ nAVbAR, version }) {
   const token = localStorage.getItem('token');
+  const location = useLocation();
+  const [dataFetched, setDataFetched] = useState(false);
+
+  useEffect(() => {
+    if (location.pathname === '/MainDash/version' && !dataFetched) {
+      // تنفيذ العمليات الضرورية هنا، مثل جلب البيانات
+      setDataFetched(true);
+    }
+  }, [location.pathname, dataFetched]);
 
   return (
-      <section className={nAVbAR ? 'MainSECTION' : 'MainSECTION-off'}>
+    <section className={nAVbAR ? 'MainSECTION' : 'MainSECTION-off'}>
       <section className='ALL-Data'>
         <div className={nAVbAR ? 'Fq-NavOptions-off' : 'Fq-NavOptions'}>
           <Link
             to={'/MainDash/Addversion'}
-            className='aa'
+            className='aa'pp
           >Add Version
           </Link>
         </div>
@@ -22,7 +28,7 @@ export default function VersionSiction({ nAVbAR , version}) {
           <thead>
             <tr>
               <th>Name</th>
-              <th>star tDate</th>
+              <th>Start Date</th>
               <th>End Date</th>
               <th>Options</th>
             </tr>
@@ -34,9 +40,7 @@ export default function VersionSiction({ nAVbAR , version}) {
                 <td>{row.startDate}</td>
                 <td>{row.endDate}</td>
                 <td className='Options'>
-                  <Link
-                        to={`/MainDash/Editversion/${row.id}`}
-                  >
+                  <Link to={`/MainDash/Editversion/${row.id}`}>
                     <MdModeEdit color='#FF8500' />
                   </Link>
                 </td>
@@ -46,5 +50,5 @@ export default function VersionSiction({ nAVbAR , version}) {
         </table>
       </section>
     </section>
-  )
+  );
 }

@@ -11,6 +11,8 @@ export default function MainDash({ nAVbAR, setnAVbAR , version}) {
     <section className='MainDashs'>
       <NavSidBar nAVbAR={nAVbAR} setnAVbAR={setnAVbAR}/>
       <MineSection nAVbAR={nAVbAR} version={version}/>
+      <czxczxc />
+      <zxczxczx />
     </section>
   )
 }
