@@ -1,0 +1,325 @@
+.MainSECTION
+{
+    width: 100%;
+    height: calc(100vh - 60px);
+    padding-left: 250px;
+    transition: .1s;
+}
+.MainSECTION-off
+{
+    width: 100%;
+    height: calc(100vh - 60px);
+    padding-left: 0px;
+    transition: .1s;
+}
+.ALL-Data
+{
+    padding: 30px 10px;
+    height: 90vh;
+    overflow-y: scroll;
+}
+.ALL-Data .Fq-NavOptions
+{
+    width: 240px;
+    height: 50px;
+    margin: 20px 0;
+    padding-left: 5px;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: -15px;
+    left: 70px;
+    transition: .2s;
+}
+.ALL-Data .Fq-NavOptions-off
+{
+    width: 240px;
+    height: 50px;
+    margin: 20px 0;
+    padding-left: 5px;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: -15px;
+    left: 320px;
+    transition: .2s;
+}
+.ALL-Data .aa 
+{
+    font-size: 22px;
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+    transition: .2s;
+    border: 1px solid #FF8500;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ALL-Data .aa svg
+{
+    margin-right: 10px;
+}
+.ALL-Data .aa:hover
+{
+    color: #fff;
+    border: 1px solid #fff;
+    transition: .2s;
+    padding: 10px;
+}
+.ALL-Data table 
+{
+    width: 100%;
+    border-collapse: collapse;
+    position: relative;
+}
+.ALL-Data table::before
+{
+    content: '';
+    position: absolute;
+    height: 20px;
+    width: 100%;
+    top: -20px;
+    background-color: #FF8500;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.ALL-Data   th,.ALL-Data  td 
+{
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.ALL-Data   th 
+{
+    background-color: #f2f2f2;
+}
+
+.ALL-Data   tr:nth-child(even) 
+{
+    background-color: #f9f9f9;
+}
+
+.ALL-Data   tr:hover 
+{
+    background-color: #f1f1f1;
+}
+.ALL-Data tr .Options
+{
+    width: 150px;
+}
+.ALL-Data td a svg
+{
+    border: 1px solid #FF8500;
+    padding: 3px;
+    width: 30px;
+    height: 30px;
+    margin: 0px 5px;
+}
+.ALL-Data td a svg:hover
+{
+    color: #fff;
+    background-color: #fff;
+}
+.DeletingMasseg 
+{
+    width: 500px;
+    height: 200px;
+    border: 1px solid #FF8500;
+    border-radius: 8px;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: .2s;
+    background-color: #fff;
+    text-align: center;
+}
+.DeletingMasseg-off
+{
+    width: 100px;
+    height: 200px;
+    border: 1px solid #FF8500;
+    border-radius: 8px;
+    position: absolute;
+    top: -1000;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: .2s;
+    text-align: center;
+    opacity: 0;
+    background-color: #fff;
+}
+.DeletingMasseg-box h2
+{
+    margin: 40px;
+}
+.DeletingMasseg-box div .Yes
+{
+    width: 120px;
+    height: 50px;
+    font-size: 22px;
+    background-color: #fff;
+    color: #FF8500;
+    border: 1px solid #FF8500;
+    border-radius: 8px;
+    margin-right: 20px;
+    cursor: pointer;
+    transition: .2s;
+}
+.DeletingMasseg-box div .Yes:hover
+{
+    transition: .2s;
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+}
+.DeletingMasseg-box div .No
+{
+    width: 120px;
+    height: 50px;
+    font-size: 22px;
+    background-color: #FF8500;
+    color: #fff;
+    border: 1px solid #FF8500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: .2s;
+}
+.DeletingMasseg-box div .No:hover
+{
+    transition: .2s;
+    background-color: green;
+    color: #fff;
+    border: none;
+}
+.ResateData
+{
+    font-size: 18px;
+    width: 100px;
+    height: 35px;
+    color: #fff;
+    border: 1px solid #fff;
+    background-color: #FF8500;
+    cursor: pointer;
+
+}
+.VirgenWorkspacs2
+{
+    font-size: 18px;
+    width: 300px;
+    height: 35px;
+    color: #fff;
+    border: 1px solid #fff;
+    background-color: transparent;
+    position: absolute;
+    top: 12px;
+    right: 50%;
+    transform: translateX(50%);
+    transition: .2s;
+}
+.VirgenWorkspacs
+{
+    font-size: 18px;
+    width: 300px;
+    height: 35px;
+    color: #fff;
+    border: 1px solid #fff;
+    background-color: transparent;
+    position: absolute;
+    top: 12px;
+    right: 50%;
+    transform: translateX(calc(50% + 250px));
+    transition: .2s;
+}
+
+.SelectedV
+{
+    width: 100px;
+    height: 35px;
+    font-size: 18px;
+    color: #fff;
+    border: 1px solid #fff;
+    background-color: #FF8500;
+    cursor: pointer;
+}
+.SelectedV:focus
+{
+    outline: none;
+}
+.Selecteds
+{
+    width: 100px;
+    height: 35px;
+    font-size: 18px;
+    color: #fff;
+    border: 1px solid #fff;
+    background-color: #FF8500;
+    cursor: pointer;
+}
+
+
+.Selecteds:focus
+{
+    outline: none;
+}
+.pagination p 
+{
+    color: #FF8500;
+    border: 1px solid #FF8500;
+    padding: 5px 10px;
+    font-weight: 600;
+    border-radius: 50%;
+}
+
+.Looder-Geniral{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.363);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 700;
+}
+.Looder-Geniral span
+{
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: black;
+    margin: 10px 0 0 5px;
+    animation: span 1s ease-in-out 0s infinite normal;
+}
+.selectedvps
+{
+    display: flex;
+    justify-content: space-between;
+    width: 305px !important;
+    position: relative;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+@keyframes span
+{
+    0%
+    {
+        background-color: black;
+    }
+    50%
+    {
+        background-color: rgba(0, 0, 0, 0);
+    }
+    100%
+    {
+        background-color: black;
+    }
+}
