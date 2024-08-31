@@ -40,7 +40,7 @@ export default function ONEintern({ nAVbAR, setnAVbAR , versionid}) {
         setData(data);
         setstart(versionid.startDate);
         setend(versionid.endDate);
-        const wordsToRemove = ['Lvl.1', 'Lvl.2', 'Lvl.3', "Web" , "Development" , '|' ];
+        const wordsToRemove = ['Lvl.1', 'Lvl.2', 'Lvl.3', "Web" , "Development" , '|' , 'App'];
         const updatedText = removeWords(data.specialization, wordsToRemove);
         setText(updatedText);
         setlooder(false)
@@ -173,7 +173,7 @@ export default function ONEintern({ nAVbAR, setnAVbAR , versionid}) {
                     </div>
                     <div className='description'>
                       <span className='xxx'>Scan To Search</span>
-                      <span>Issued 2024-December</span>
+                      <span>Issued 2024-July</span>
                       <span>VALID CERTIFICATE ID</span>
                       <span>{Data.id_certificate}</span>
                     </div>
@@ -215,7 +215,7 @@ export default function ONEintern({ nAVbAR, setnAVbAR , versionid}) {
                     </div>
                     <div className='description'>
                       <span className='xxx'>Scan To Search</span>
-                      <span>Issued 2024-December</span>
+                      <span>Issued 2024-July</span>
                       <span>VALID CERTIFICATE ID</span>
                       <span>{Data.id_certificate}</span>
                     </div>
@@ -268,7 +268,7 @@ export default function ONEintern({ nAVbAR, setnAVbAR , versionid}) {
               <div className='end-certificate'>
                 <div>
                   <p><span>focal X agency</span> (Syrian O.P limited liability co.)</p>
-                  <p className='Tajawal'>محدودة المسؤولية <span><span className='Montserat Bolderr'>focal X</span><span style={{margin:'0 0 -2px 2px'}}>شركة</span></span></p>
+                  <p className='Tajawal'>محدودة المسؤولية <span><span className='Montserat Bolderr'>focal X</span><span style={{margin:'0 0 -4px 2px'}}>شركة</span></span></p>
                 </div>
                 <div>
                   <p>Commercial register No.10062 Latakia 2022</p>
