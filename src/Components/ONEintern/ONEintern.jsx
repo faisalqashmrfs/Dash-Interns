@@ -40,7 +40,7 @@ export default function ONEintern({ nAVbAR, setnAVbAR , versionid}) {
         setData(data);
         setstart(versionid.startDate);
         setend(versionid.endDate);
-        const wordsToRemove = ['Lvl.1', 'Lvl.2', 'Lvl.3', "Web" , "Development" , '|' , 'App'];
+        const wordsToRemove = ['Lvl.1', 'Lvl.2', 'Lvl.3', "Web" , "Development" , '|' , 'App', 'Marketing Administration' , '&'];
         const updatedText = removeWords(data.specialization, wordsToRemove);
         setText(updatedText);
         setlooder(false)
